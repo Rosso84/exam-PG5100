@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+>
+<!--xmlns:c="http://java.sun.com/jsp/jstl/core"-->
+
+<ui:composition template="/layout.xhtml">
+
+    <ui:define name="title">
+        User Details
+    </ui:define>
+
+
+    <ui:define name="content">
+
+        <c:set value="#{userInfoController.userInfoWithPurchases}" var="user"/>
+        <h4>Account details</h4>
+        <p style="font-size: 13px;">Name: #{user.firstname}</p>
+        <p style="font-size: 13px;">Middlename: #{user.middleName}</p>
+        <p style="font-size: 13px;">Surename: #{user.surename}</p>
+        <p style="font-size: 13px;">Address: #{user.address}</p>
+        <p style="font-size: 13px;">Postal code: #{user.postalCode}</p>
+        <p style="font-size: 13px;">Email: #{user.email}</p> <br/><br/>
+
+
+        <h4>Your Purchases</h4>
+
+
+
+    </ui:define>
+
+</ui:composition>
+</html>

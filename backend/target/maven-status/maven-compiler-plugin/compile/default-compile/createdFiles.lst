@@ -1,0 +1,8 @@
+org/exam/backend/PasswordConfig.class
+org/exam/backend/services/UserService.class
+org/exam/backend/entities/Item.class
+org/exam/backend/entities/Rank.class
+org/exam/backend/entities/Comment.class
+org/exam/backend/services/RankService.class
+org/exam/backend/entities/User.class
+org/exam/backend/services/ItemService.class
