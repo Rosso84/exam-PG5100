@@ -11,8 +11,9 @@
     <name>Root of pg5100</name>
 
     <modules>
-       <!-- <module>frontend</module>-->
+        <module>frontend</module>
         <module>backend</module>
+        <module>report</module>
     </modules>
 
     <properties>
