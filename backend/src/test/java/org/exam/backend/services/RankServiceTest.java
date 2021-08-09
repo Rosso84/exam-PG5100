@@ -88,6 +88,11 @@ public class RankServiceTest extends ServiceTestBase{
         assertEquals( rankId, rankedItem.getId() );
         assertEquals( user1.getEmail(), rankedItem.getUser().getEmail() );
 
+        Long rankId2 = rankService.rankItem( usersMail, itemTourId, 4,"Some comment about the Item2.");
+
+        assertNotNull( rankId2 );
+
+
     }
 
 

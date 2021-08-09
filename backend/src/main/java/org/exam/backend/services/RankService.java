@@ -45,5 +45,10 @@ public class RankService {
         return em.find(Rank.class, id);
     }
 
+    public boolean hasRankedItem(String userId, Long itemId){
+
+
+    }
+
 
 }
