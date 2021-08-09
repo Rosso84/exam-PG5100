@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -28,6 +30,11 @@ public class RankService {
             throw new IllegalArgumentException("Item with id " + itemId + " does not exist");
         }
 
+        if ( userHasRankedItem( userId, itemId )){
+            System.out.println( "User with id " + userId + " has already ranked item with id " + itemId);
+            return null;
+        }
+
         LocalDate todaysDate = LocalDate.now();
 
         Rank rank = new Rank();
@@ -38,17 +45,45 @@ public class RankService {
         rank.setDateCommented( todaysDate );
         em.persist( rank );
 
+       // user.setRank( rank );
+
+        Integer increment = user.getNumberOfVotes() + 1;
+        user.setNumberOfVotes( increment );
+
+        item.getRankings().add( rank );
+
         return rank.getId();
     }
+
 
     public Rank getRankedItem(Long id){
         return em.find(Rank.class, id);
     }
 
-    public boolean hasRankedItem(String userId, Long itemId){
 
+    public boolean userHasRankedItem(String userId, Long itemId){
 
+        TypedQuery<Rank> query = em.createQuery(
+                "select r from Rank r where r.user.email = ?1 and r.item.id = ?2",
+                Rank.class);
+        query.setParameter(1, userId);
+        query.setParameter(2, itemId);
+
+        return query.getResultList().size() > 0;
     }
+
+    public Rank getRankByUserIdAndItemId(String userId, Long itemId){
+
+        TypedQuery<Rank> query = em.createQuery(
+                "select r from Rank r where r.user.email = ?1 and r.item.id = ?2",
+                Rank.class);
+        query.setParameter(1, userId);
+        query.setParameter(2, itemId);
+
+        return query.getSingleResult();
+    }
+
+
 
 
 }

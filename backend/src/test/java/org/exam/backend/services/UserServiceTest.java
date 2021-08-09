@@ -156,30 +156,5 @@ public class UserServiceTest extends ServiceTestBase{
     }
 
 
-  /*  @Test
-    public void testGetRanking(){
-        boolean created = userService.createUser(email, name, midleName, surename, address, postalCode, password);
-        assertTrue( created );
 
-        User user = userService.getUser(email, false);
-
-        LocalDate departureDate = LocalDate.now().plusYears(1);
-        LocalDate returnDate = departureDate.plusMonths(1);
-
-        Long trip1 = tripService.createTrip("aaa", "BBB", 4000, "Bahamas", departureDate, returnDate);
-        Long trip2 = tripService.createTrip("nnn", "CCCCC", 8000, "Spain", departureDate, returnDate);
-        Long trip3 = tripService.createTrip("vvv", "GGG", 9000, "Thailand", departureDate, returnDate);
-
-        purchaseService.bookTrip(user.getEmail(), trip1);
-        purchaseService.bookTrip(user.getEmail(), trip2);
-        purchaseService.bookTrip(user.getEmail(), trip3);
-
-        User userAfterPurchase = userService.getUser(email, true);
-
-        assertEquals(3, userAfterPurchase.getPurchases().size());
-        assertTrue(userAfterPurchase.getPurchases().get(0).getTrip().getLocation() == "Bahamas");
-        assertTrue(userAfterPurchase.getPurchases().get(1).getTrip().getLocation() == "Spain");
-        assertTrue(userAfterPurchase.getPurchases().get(2).getTrip().getLocation() == "Thailand");
-
-    }*/
 }

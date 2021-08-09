@@ -68,7 +68,11 @@ public class ItemService {
                 .orElse(0.0);
     }
 
+    public boolean updateComment(Long rankId, String userId){
 
+
+
+    }
 
 
 }

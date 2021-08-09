@@ -68,32 +68,48 @@ public class RankServiceTest extends ServiceTestBase{
     @Test
     public void testRankSameItemTwiceFails(){
         Long itemTourId = createValidItem("Tour", "Some title ", "Some description about the Item");
-        // Long itemWineId = createValidItem("Wine And Food", "Some title ", "Some description about the Item");
 
         User user1 = createValidUser( email );
-       /* User user2 = createValidUser("foo@bar.com");
-        User user3 = createValidUser("foo2@bar3.com");
-*/
 
         String usersMail = user1.getEmail();
 
-        Integer incrementVotes = user1.getNumberOfVotes() + 1;
+        String comment = "Some comment about the Item.";
 
-        Long rankId = rankService.rankItem( usersMail, itemTourId, 4,"Some comment about the Item.");
-        user1.setNumberOfVotes( incrementVotes );
+        Integer score = 4;
+
+        Long rankId = rankService.rankItem( usersMail, itemTourId, score, comment);
         assertNotNull( rankId );
 
         Rank rankedItem = rankService.getRankedItem( rankId );
-
         assertEquals( rankId, rankedItem.getId() );
         assertEquals( user1.getEmail(), rankedItem.getUser().getEmail() );
 
-        Long rankId2 = rankService.rankItem( usersMail, itemTourId, 4,"Some comment about the Item2.");
-
-        assertNotNull( rankId2 );
-
+        Long rankSameAgain = rankService.rankItem( usersMail, itemTourId, score, comment);
+        assertNull( rankSameAgain );
 
     }
+
+
+    @Test
+    public void testGetUsersRanking(){
+
+    }
+
+    @Test
+    public void testRankItemByManyUsers(){
+        User user1 = createValidUser( email );
+        User user2 = createValidUser("foo@bar.com");
+        User user3 = createValidUser("foo2@bar3.com");
+
+    }
+
+    @Test
+    public void testNumberOfVotesPrUser(){
+
+    }
+
+
+
 
 
 

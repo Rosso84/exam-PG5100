@@ -40,8 +40,8 @@ public class User {
     @Size(max = 250)
     private String password;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Rank rank;
+    /*@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Rank rank;*/
 
     @Max(1000)
     private Integer numberOfVotes;
@@ -137,14 +137,14 @@ public class User {
         this.postalCode = postalCode;
     }
 
-  /*  public Rank getRank() {
+    /*public Rank getRank() {
         return rank;
     }
 
     public void setRank(Rank rank) {
         this.rank = rank;
-    }
-*/
+    }*/
+
     public Integer getNumberOfVotes() {
         return numberOfVotes;
     }
@@ -153,11 +153,4 @@ public class User {
         this.numberOfVotes = numberOfVotes;
     }
 
-    /* public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }*/
 }
