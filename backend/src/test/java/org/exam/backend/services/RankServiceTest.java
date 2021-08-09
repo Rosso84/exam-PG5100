@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = StubApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class RankingServiceTest extends ServiceTestBase{
+public class RankServiceTest extends ServiceTestBase{
 
 
     @Autowired
@@ -51,7 +51,24 @@ public class RankingServiceTest extends ServiceTestBase{
     @Test
     public void testRankItem(){
         Long itemTourId = createValidItem("Tour", "Some title ", "Some description about the Item");
-       // Long itemWineId = createValidItem("Wine And Food", "Some title ", "Some description about the Item");
+        User user1 = createValidUser( email );
+
+        String usersMail = user1.getEmail();
+
+        Long rankId = rankService.rankItem( usersMail, itemTourId, 1,"Some comment about the Item.");
+        assertNotNull( rankId );
+
+        Rank rankedItem = rankService.getRankedItem( rankId );
+
+        assertEquals( rankId, rankedItem.getId() );
+        assertEquals( user1.getEmail(), rankedItem.getUser().getEmail() );
+
+    }
+
+    @Test
+    public void testRankSameItemTwiceFails(){
+        Long itemTourId = createValidItem("Tour", "Some title ", "Some description about the Item");
+        // Long itemWineId = createValidItem("Wine And Food", "Some title ", "Some description about the Item");
 
         User user1 = createValidUser( email );
        /* User user2 = createValidUser("foo@bar.com");
@@ -60,16 +77,19 @@ public class RankingServiceTest extends ServiceTestBase{
 
         String usersMail = user1.getEmail();
 
-        //Long rankId = rankService.rankItem( usersMail, itemTourId, 2,"Some comment about the Item.");
-        Long rankId = rankService.rankItem( usersMail, itemTourId, 1,"Some comment about the Item.");
+        Integer incrementVotes = user1.getNumberOfVotes() + 1;
+
+        Long rankId = rankService.rankItem( usersMail, itemTourId, 4,"Some comment about the Item.");
+        user1.setNumberOfVotes( incrementVotes );
         assertNotNull( rankId );
 
-        //Rank rankedItem = rankService.getRankedItem( rankId );
+        Rank rankedItem = rankService.getRankedItem( rankId );
 
-        //assertEquals( rankId );
-        //assertEquals( user1.getEmail(), rankedItem.getUser().getEmail() );
+        assertEquals( rankId, rankedItem.getId() );
+        assertEquals( user1.getEmail(), rankedItem.getUser().getEmail() );
 
     }
+
 
 
 

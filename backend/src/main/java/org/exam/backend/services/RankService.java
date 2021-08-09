@@ -36,6 +36,7 @@ public class RankService {
         rank.setScore( score );
         rank.setComment( comment );
         rank.setDateCommented( todaysDate );
+        em.persist( rank );
 
         return rank.getId();
     }
