@@ -17,7 +17,7 @@
 
     <ui:define name="content">
 
-        <c:set value="#{userInfoController.userInfoWithPurchases}" var="user"/>
+        <c:set value="#{userInfoController.userInfo}" var="user"/>
         <h4>Account details</h4>
         <p style="font-size: 13px;">Name: #{user.firstname}</p>
         <p style="font-size: 13px;">Middlename: #{user.middleName}</p>
@@ -26,8 +26,7 @@
         <p style="font-size: 13px;">Postal code: #{user.postalCode}</p>
         <p style="font-size: 13px;">Email: #{user.email}</p> <br/><br/>
 
-
-        <h4>Your Purchases</h4>
+        <h4>Number of votes casted: #{user.numberOfVotes}</h4>
 
 
 

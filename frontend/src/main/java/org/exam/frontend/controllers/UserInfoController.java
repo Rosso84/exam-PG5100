@@ -27,15 +27,11 @@ public class UserInfoController implements Serializable {
         return ( (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal() ).getUsername();
     }
 
-    public User getUserInfoWithPurchases(){
+    public User getUserInfo(){
         this.user = userService.getUser( getUserName());
         return user;
     }
 
-    public User getUserInfoWithoutPurchases(){
-        this.user = userService.getUser( getUserName());
-        return user;
-    }
 
  /*   public boolean isPurchasesEmpty(User user){
         return user.getPurchases().size() > 0;

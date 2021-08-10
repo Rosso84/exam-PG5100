@@ -12,12 +12,31 @@
 <ui:composition template="/layout.xhtml">
 
     <ui:define name="title">
-        Travel Agency
+        Travel Forum
     </ui:define>
 
     <ui:define name="content">
 
-        <h2>Main Page</h2>
+        <h2>All Items</h2>
+
+        <h:form prependId="false">
+
+            <c:forEach var="item" items="#{itemController.allItemsList}">
+                <div class="item-div">
+                    <p> Category: #{item.category}</p>
+                    <p>#{item.title}</p>
+                    <p> Votes: </p>
+                    <h:commandButton value="See Details"
+                                     id="detail-btn-item"
+                                     action="#{itemController.toDetailPage( item )}"
+                                     class="btn btn-white btn-animation-1"/>
+                </div>
+                <br/>
+            </c:forEach>
+
+        </h:form>
+
+
 
     </ui:define>
 </ui:composition>

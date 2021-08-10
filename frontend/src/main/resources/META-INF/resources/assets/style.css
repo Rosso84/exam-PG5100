@@ -130,4 +130,14 @@ html, body {
     font-size: 1em;
 }
 
+.item-div{
+    position: relative;
+    left: 600px;
+    width: fit-content;
+    height: fit-content;
+    border: black;
+    border-style: dashed;
+    border-width: thick;
+}
+
 

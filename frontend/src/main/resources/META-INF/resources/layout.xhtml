@@ -28,19 +28,12 @@
 <body>
 
 <sec:authenticated>
-    <c:set value="#{userInfoController.userInfoWithoutPurchases}" var="user"/>
-
+    <c:set value="#{userInfoController.userInfo}" var="user"/>
     <p class="welcome_message">Welcome #{user.firstname}!! </p>
-
     <a href="index.jsf" class="btn btn-white btn-animation-1">Home</a>
-
     <a href="userDetail.jsf" class="btn btn-white btn-animation-1">My Account</a>
-
     <a href="logout" class="btn btn-white btn-animation-1">Log Out</a>
 
-    <!--<p class="username_Email">Logged in as: #{userInfoController.userName} </p>-->
-
-    <h2>Travel Agency</h2>
 </sec:authenticated>
 
 
@@ -49,9 +42,9 @@
     <a id="linkToLoginId" href="login.jsf" class="btn btn-white btn-animation-1">Log In</a>
     <a id="linkToSignupId" href="signup.jsf" class="btn btn-white btn-animation-1">Sign Up</a>
     <a href="/index.jsf" class="btn btn-white btn-animation-1">Home</a>
-
-    <h2>Travel Agency</h2>
 </sec:anonymous>
+
+<h2>Travel Forum</h2>
 
 <hr/>
 
