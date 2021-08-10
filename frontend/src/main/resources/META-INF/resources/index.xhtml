@@ -25,11 +25,18 @@
                 <div class="item-div">
                     <p> Category: #{item.category}</p>
                     <p>#{item.title}</p>
-                    <h:commandButton value="See Details"
-                                     id="detail-btn-item"
-                                     action="#{itemController.toDetailPage( item )}"
-                                     class="btn btn-white btn-animation-1"/>
-
+                    <sec:authenticated>
+                        <h:commandButton value="See Details"
+                                         id="detail-btn-item1"
+                                         action="#{itemController.toDetailPageAuthenticated( item, userInfoController.userInfo.email )}"
+                                         class="btn btn-white btn-animation-1"/>
+                    </sec:authenticated>
+                    <sec:anonymous>
+                        <h:commandButton value="See Details"
+                                         id="detail-btn-item2"
+                                         action="#{itemController.toDetailPageAnonymous( item )}"
+                                         class="btn btn-white btn-animation-1"/>
+                    </sec:anonymous>
                 </div>
                 <br/>
             </c:forEach>

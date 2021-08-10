@@ -50,7 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             http.authorizeRequests()
                     .antMatchers("/", "/index.jsf","/itemDetails.jsf", "/signup.jsf","/assets/**").permitAll()
                     .antMatchers("/javax.faces.resource/**").permitAll()
-                    //.anyRequest().authenticated()
                     .and()
                     .formLogin()
                     .loginPage("/login.jsf").permitAll()

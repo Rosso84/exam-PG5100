@@ -45,8 +45,6 @@ public class RankService {
         rank.setDateCommented( todaysDate );
         em.persist( rank );
 
-       // user.setRank( rank );
-
         Integer increment = user.getNumberOfVotes() + 1;
         user.setNumberOfVotes( increment );
 

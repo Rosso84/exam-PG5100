@@ -22,7 +22,6 @@ public class Rank {
     @ManyToOne
     private Item item;
 
-    @NotNull
     @Max(50)
     private Integer score;
 
