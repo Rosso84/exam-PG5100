@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-
 import javax.sql.DataSource;
 
 
@@ -54,8 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             http.authorizeRequests()
                     .antMatchers("/", "/index.jsf", "/signup.jsf").permitAll()
                     .antMatchers("/javax.faces.resource/**").permitAll()
-                    //.antMatchers("/ui/**").authenticated()
-                    //.anyRequest().authenticated()
+                    .antMatchers("/ui/**").authenticated()
+                    .anyRequest().authenticated()
                     .and()
                     .formLogin()
                     .loginPage("/login.jsf").permitAll()

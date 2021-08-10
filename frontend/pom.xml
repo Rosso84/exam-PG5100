@@ -177,14 +177,13 @@
                     <artifactId>heroku-maven-plugin</artifactId>
                     <version>2.0.2</version>
                     <configuration>
-                        <appName>travel-agency-rooz
-                        </appName> <!--TODO: Remember to rename when created new name at Heroku -->
+                        <appName>my-trip-advisor</appName> <!--TODO: Remember to rename when created new name in Heroku -->
                         <includeTarget>false</includeTarget>
                         <includes>
-                            <include>target/travelagency-exec.jar</include>
+                            <include>target/my-trip-advisor-exec.jar</include>
                         </includes>
                         <processTypes>
-                            <web>java -Dserver.port=$PORT -jar target/travelagency-exec.jar</web>
+                            <web>java -Dserver.port=$PORT -jar target/my-trip-advisor-exec.jar</web>
                         </processTypes>
                         <jdkVersion>11</jdkVersion>
                     </configuration>
