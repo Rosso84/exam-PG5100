@@ -23,18 +23,61 @@ public class ItemController implements Serializable {
 
     private Item selectedItem;
 
+    private String chosenFilterCtg;
+
     private String comment;
 
     private boolean ranked;
 
+  /*  private String ctgWatersport = "Watersport";
+    private String ctgTour = "Tour";
+    */
+
     private List<Item> allItemsList;
+
+  /*  private List<Item> allItemsListTour;
+    private List<Item> allItemsListWaterSport;
+*/
+
 
 
     public List<Item> getAllItemsList() {
-       allItemsList = itemService.getALLItemOrderByCategory(true);
+        if (this.allItemsList == null || this.allItemsList.size() == 0){
+            retrieveAllItems();
+        }
+        return this.allItemsList;
+    }
+
+    public int getAllItemsListSize(){
+        return getAllItemsList().size();
+    }
+
+    public void retrieveAllItemsBySearch() {
+        this.allItemsList = itemService.getAllItemsByCategory( getChosenFilterCtg().toLowerCase(), true );
+    }
+
+    public void retrieveAllItems() {
+        this.allItemsList = itemService.getALLItemOrderByCategory(true);
+        System.out.println("List size : " + this.allItemsList.size());
+    }
+
+/*    public void makeAllItemsList(List<Item> allItemsList) {
+        this.allItemsList = allItemsList;
+        System.out.println("List size : " + this.allItemsList.size());
+    }
+
+
+
+    public List<Item> getAllItemsTour() {
+        this.allItemsList = itemService.getAllItemsByCategory(this.ctgTour,true);
+        System.out.println("List size : " + this.allItemsList.size());
         return allItemsList;
     }
 
+    public List<Item> retreiveAllItemsWaterSport() {
+        this.allItemsList = itemService.getAllItemsByCategory(this.ctgWatersport,true);
+        return allItemsList;
+    }*/
 
     public Item getSelectedItem() {
         return selectedItem;
@@ -60,6 +103,13 @@ public class ItemController implements Serializable {
         this.ranked = isRanked;
     }
 
+    public String getChosenFilterCtg() {
+        return this.chosenFilterCtg;
+    }
+
+    public void setChosenFilterCtg(String chosenFilterCtg) {
+        this.chosenFilterCtg = chosenFilterCtg;
+    }
 
     public boolean isItemRanked() {
         return this.ranked;

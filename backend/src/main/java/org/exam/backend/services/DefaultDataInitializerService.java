@@ -39,7 +39,7 @@ public class DefaultDataInitializerService {
                 "OclahomaStreet 22nd", "2020", password));
 
 
-        String ctgTour = "Tour";
+        String ctgTour = "tour";
 
         String titleTour1 = "Rafting Tour In Alanya";
         String descrTour1 = "Marvel at the natural beauty of Köprülü Canyon\n" +
@@ -111,7 +111,7 @@ public class DefaultDataInitializerService {
 
 
 
-        String ctgWaterSport = "Watersport";
+        String ctgWaterSport = "watersport";
 
         String titleWater1 = "The top water activities to try in Qatar";
         String descrWater1 = "As a peninsula surrounded by the Arabian sea and blessed with year-round sunny weather, " +

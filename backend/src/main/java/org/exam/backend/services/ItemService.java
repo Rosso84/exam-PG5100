@@ -55,6 +55,21 @@ public class ItemService {
         return items;
     }
 
+    public List<Item> getAllItemsByCategory(String ctg, boolean with_rankings){
+        TypedQuery<Item> query = em.createQuery(
+                "select i from Item i where i.category = ?1", Item.class);
+
+        query.setParameter(1, ctg);
+
+        List<Item> items = query.getResultList();
+
+        if ( with_rankings ){
+            items.forEach(i -> i.getRankings().size());
+        }
+
+        return items;
+    }
+
 
 
     public Long updateComment(Long itemId, String userId, String comment){

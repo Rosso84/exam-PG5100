@@ -17,9 +17,20 @@
 
     <ui:define name="content">
 
-        <h2>All Items</h2>
-
+        <h2>All Items (#{itemController.allItemsListSize})</h2>
         <h:form prependId="false">
+
+            <h:outputLabel id="label-filterby-ctg" value="Search by category (e.g Watersport or Tour)"/>
+            <h:inputText id="searc-input" value="#{itemController.chosenFilterCtg}"/>
+            <h:commandButton class="btn btn-white btn-animation-1"
+                             id="btn-search-filter"
+                             value="Search"
+                             action="#{itemController.retrieveAllItemsBySearch}"/>
+
+            <h:commandButton class="btn btn-white btn-animation-1"
+                             id="btn-all-items"
+                             value="View All Items"
+                             action="#{itemController.retrieveAllItems}"/>
 
             <c:forEach var="item" items="#{itemController.allItemsList}">
                 <div class="item-div">

@@ -37,7 +37,7 @@
 
                 <c:choose>
                     <c:when test="#{itemController.isItemRanked()}">
-                        <p style="color: red; font-size: medium">You have already ranked this trip</p>
+                        <p style="color: red; font-size: medium">You have ranked this trip</p>
                     </c:when>
                     <c:otherwise>
                         <h:inputText id="input-txt-comment" value="#{itemController.comment}"/>
@@ -47,7 +47,7 @@
                                          action="#{itemController.giveItemScore(user.email, item.id, 4)}"
                                          disabled="#{itemController.isItemRanked()}"
                         />
-                        <p>Choose a rank</p>
+                        <p>Choose a score</p>
                         <h:commandButton id="btnScore1"
                                          value="1"
                                          class="btn"

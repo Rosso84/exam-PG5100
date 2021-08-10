@@ -2,9 +2,7 @@ package org.exam.backend.services;
 
 import org.exam.backend.StubApplication;
 import org.exam.backend.entities.Item;
-import org.exam.backend.entities.Rank;
 import org.exam.backend.entities.User;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,20 +54,27 @@ public class ItemServiceTest extends ServiceTestBase{
 
     private void createMultipleItems(){
         String ctg1 = "Tour";
-        String ctg2 = "Food And Drink";
+        String ctg2 = "Watersport";
 
         String title1 = "City tour";
         String title2 = "Multiple tour";
-        String title3 = "Wine tour";
-        String title4 = "Food Tour";
+        String title3 = "Wine tour2";
+
+        String title4 = "swimming2";
+        String title5 = "swimming3";
+        String title6 = "swimming4";
+        String title7 = "swimming5";
 
         String description = "Description about the Item. It is a nice tour. Good Service and nice people, very popular";
 
         Long tour1 = createValidItem( ctg1,title1, description );
         Long tour2 = createValidItem( ctg1, title2, description );
+        Long tour3 = createValidItem( ctg1, title3, description );
 
-        Long foodAndDrink1 = createValidItem( ctg2, title3, description );
-        Long foodAndDrink2 = createValidItem( ctg2, title4, description );
+        Long water1 = createValidItem( ctg2, title4, description );
+        Long water2 = createValidItem( ctg2, title5, description );
+        Long water3 = createValidItem( ctg2, title6, description );
+        Long water4 = createValidItem( ctg2, title7, description );
     }
 
 
@@ -90,17 +95,42 @@ public class ItemServiceTest extends ServiceTestBase{
     }
 
     @Test
-    void getALLItemOrderByCategory() {
+    public void getALLItemOrderByCategory() {
         createMultipleItems();
 
         List<Item> items = itemService.getALLItemOrderByCategory(false);
 
-        assertEquals(4, items.size() );
+        assertEquals(7, items.size() );
+    }
+
+    @Test
+    public void getAllItemsByCategory(){
+        String ctg1 = "Tour";
+        String ctg2 = "Watersport";
+
+        createMultipleItems();
+
+        List<Item> itemsTours = itemService.getAllItemsByCategory( ctg1, true);
+        List<Item> itemsWaterSport = itemService.getAllItemsByCategory( ctg2, true);
+
+        assertEquals(3, itemsTours.size());
+        assertEquals(4, itemsWaterSport.size());
+
+        assertEquals(itemsTours.get(0).getCategory(), ctg1);
+        assertEquals(itemsTours.get(1).getCategory(), ctg1);
+        assertEquals(itemsTours.get(2).getCategory(), ctg1);
+
+        assertEquals(itemsWaterSport.get(0).getCategory(), ctg2);
+        assertEquals(itemsWaterSport.get(1).getCategory(), ctg2);
+        assertEquals(itemsWaterSport.get(2).getCategory(), ctg2);
+        assertEquals(itemsWaterSport.get(3).getCategory(), ctg2);
+
+
     }
 
 
     @Test
-    void updateComment() {
+    public void updateComment() {
 
         User user = createValidUser("roozm@hotmail.com");
         assertNotNull (user);
