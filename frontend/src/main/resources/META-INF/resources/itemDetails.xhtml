@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:sec="http://www.springframework.org/security/tags"
+>
+
+<ui:composition template="/layout.xhtml">
+
+    <ui:define name="title">
+        Item Details
+    </ui:define>
+
+
+    <ui:define name="content">
+
+        <h2>Item Details</h2>
+
+
+        <h:form>
+            <c:set value="#{userInfoController.userInfo}" var="user"/>
+            <c:set var="item" value="#{itemController.selectedItem}"/>
+
+            <br/>
+
+            <h3>#{item.title} </h3>
+            <div class="description-div">
+                <p>#{item.description}</p>
+            </div>
+
+            <br/>
+
+            <sec:authenticated>
+
+                <c:choose>
+                    <c:when test="#{itemController.isItemRanked()}">
+                        <p style="color: red; font-size: medium">You have already ranked this trip</p>
+                    </c:when>
+                    <c:otherwise>
+                        <h:inputText id="input-txt-comment" value="#{itemController.comment}"/>
+                        <h:commandButton id="btnComment"
+                                         value="Submit"
+                                         class="btn"
+                                         action="#{itemController.giveItemScore(user.email, item.id, 4)}"
+                                         disabled="#{itemController.isItemRanked()}"
+                        />
+                        <p>Choose a rank</p>
+                        <h:commandButton id="btnScore1"
+                                         value="1"
+                                         class="btn"
+                                         action="#{itemController.giveItemScore(user.email, item.id, 1)}"
+                                         disabled="#{itemController.isItemRanked() }"/>
+                        <h:commandButton id="btnScore2"
+                                         value="2"
+                                         class="btn"
+                                         action="#{itemController.giveItemScore(user.email, item.id, 2)}"
+                                         disabled="#{itemController.isItemRanked() }"/>
+                        <h:commandButton id="btnScore3"
+                                         value="3"
+                                         class="btn"
+                                         action="#{itemController.giveItemScore(user.email, item.id, 3)}"
+                                         disabled="#{itemController.isItemRanked() }"/>
+                        <h:commandButton id="btnScore4"
+                                         value="4"
+                                         class="btn"
+                                         action="#{itemController.giveItemScore(user.email, item.id, 4)}"
+                                         disabled="#{itemController.isItemRanked() }"/>
+                        <h:commandButton id="btnScore5"
+                                         value="5"
+                                         class="btn"
+                                         action="#{itemController.giveItemScore(user.email, item.id, 5)}"
+                                         disabled="#{itemController.isItemRanked() }"/>
+                    </c:otherwise>
+                </c:choose>
+            </sec:authenticated>
+            <sec:anonymous>
+                <h:outputText style="font-size: 16px; color: blueviolet"
+                              value="You need to login/register to rank/comment this item."/>
+            </sec:anonymous>
+
+            <br/>
+
+            <p style="color: red">
+                average #{itemController.getAvgVotes( item )}
+                <span style="color: blue"> (by #{itemController.getNumberOfUsersVoted( item )} users) </span>
+            </p>
+
+            <c:forEach items="#{item.rankings}" var="ranking">
+                <div class="item-div">
+                    <p style="font-size: 15px;">user: #{ranking.user.firstname}</p>
+                    <p style="font-size: 25px; color: red">#{ranking.score}</p>
+                    <p style="font-size: 15px;">#{ranking.comment}</p>
+                    <p style="font-size: 10px;">commented: #{ranking.dateCommented}</p>
+                </div>
+
+
+            </c:forEach>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+</html>
