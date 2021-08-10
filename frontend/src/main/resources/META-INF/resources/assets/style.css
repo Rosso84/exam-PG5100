@@ -133,11 +133,20 @@ html, body {
 .item-div{
     position: relative;
     left: 600px;
-    width: fit-content;
-    height: fit-content;
+    width: 200px;
+    height: 210px;
     border: black;
-    border-style: dashed;
-    border-width: thick;
+    border-style: wave;
+    border-width: 2px;
+    background: white;
+}
+
+.description-div{
+    position: relative;
+    left: 510px;
+    width: 400px;
+    height: 250px;
+    background: cornflowerblue;
 }
 
 
