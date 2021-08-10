@@ -30,12 +30,7 @@ public class UserServiceTest extends ServiceTestBase{
     @Autowired
     private UserService userService;
 
- /*   @Autowired
-    private TripService tripService;
 
-    @Autowired
-    private PurchaseService purchaseService;
-*/
     private ValidatorFactory valFactory;
     private Validator validator;
 
@@ -126,7 +121,7 @@ public class UserServiceTest extends ServiceTestBase{
         }
 
         String email = "Rossi";
-        email = email.concat(x);
+        email = email.concat( x );
         email = email.concat("@Gmail.com");
 
         User user = createValidUser(email, password);
@@ -142,7 +137,7 @@ public class UserServiceTest extends ServiceTestBase{
         /**
          * Note the password will be hashed after encryption and returns a larger String of mixed values,
          * so this does not test how many characters a user inputs but rather how big the hashed password is.
-         * Limit of length should be set in frontend*/
+         * Limit of length will be set in frontend*/
 
         String hashedPassword = "";
 

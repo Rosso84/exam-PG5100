@@ -16,7 +16,7 @@ import java.io.Serializable;
 @SessionScoped
 public class UserInfoController implements Serializable {
 
-/*
+
     @Autowired
     private UserService userService;
 
@@ -35,7 +35,7 @@ public class UserInfoController implements Serializable {
     public User getUserInfoWithoutPurchases(){
         this.user = userService.getUser( getUserName());
         return user;
-    }*/
+    }
 
  /*   public boolean isPurchasesEmpty(User user){
         return user.getPurchases().size() > 0;

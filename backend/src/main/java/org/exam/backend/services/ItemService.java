@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ForeignKey;
 import javax.persistence.TypedQuery;
 import java.time.LocalDate;
 import java.util.List;
@@ -32,7 +33,9 @@ public class ItemService {
 
     public Item getItem(Long id, boolean with_rankings){
         Item item = em.find(Item.class, id);
-
+        if (item == null){
+                throw new IllegalArgumentException("Item with id " + id + " does not exist");
+        }
         if ( with_rankings && item != null){
             item.getRankings().size();
         }
@@ -52,7 +55,36 @@ public class ItemService {
         return items;
     }
 
-    public Double getAverageRank(Long item_id){
+
+
+    public Long updateComment(Long itemId, String userId, String comment){
+
+       Item item = getItem(itemId, true);
+
+       for (Rank rank: item.getRankings()){
+           if ( rank.getUser().getEmail().equals( userId ) ){
+               rank.setComment( comment );
+           }
+       }
+       em.merge( item );
+       return item.getId();
+    }
+
+    public Long updateScore(Long itemId, String userId, Integer score){
+
+        Item item = getItem(itemId, true);
+
+        for (Rank rank: item.getRankings()){
+            if ( rank.getUser().getEmail().equals( userId ) ){
+                rank.setScore( score );
+            }
+        }
+        em.merge( item );
+        return item.getId();
+    }
+
+
+    public Double getItemsAverageRank(Long item_id){
 
         Item item = getItem(item_id, true);
 
@@ -66,12 +98,6 @@ public class ItemService {
                 .mapToDouble(s -> s)
                 .average()
                 .orElse(0.0);
-    }
-
-    public boolean updateComment(Long rankId, String userId){
-
-
-
     }
 
 
