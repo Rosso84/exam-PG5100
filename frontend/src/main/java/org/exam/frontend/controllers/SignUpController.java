@@ -19,7 +19,7 @@ public class SignUpController {
 
 
     @Autowired
-    private UserService userService;
+    private UserService userService1;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -44,7 +44,7 @@ public class SignUpController {
 
         boolean registered = false;
         try {
-            registered = userService.createUser(email, firstName, midleName, sureName, address, postalCode, password);
+            registered = userService1.createUser(email, firstName, midleName, sureName, address, postalCode, password);
         }catch (Exception e){
             //nothing to do
         }

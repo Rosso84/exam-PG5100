@@ -28,11 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    @Bean
-    public PasswordEncoder passwordEncoder()
-    {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Bean
     @Override
@@ -51,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         try {
             http.csrf().disable();
             http.authorizeRequests()
-                    .antMatchers("/", "/index.jsf", "/signup.jsf").permitAll()
+                    .antMatchers("/", "/index.jsf", "/signup.jsf", "/assets/**").permitAll()
                     .antMatchers("/javax.faces.resource/**").permitAll()
                     .antMatchers("/ui/**").authenticated()
                     .anyRequest().authenticated()
@@ -87,7 +84,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     /*
                         Note: in BCrypt, the "password" field also contains the salt
                      */
-                    .passwordEncoder(passwordEncoder());
+                    .passwordEncoder( passwordEncoder );
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
