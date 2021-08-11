@@ -37,7 +37,30 @@
 
                 <c:choose>
                     <c:when test="#{itemController.isItemRanked()}">
-                        <p style="color: red; font-size: medium">You have ranked this trip</p>
+                        <h:outputLabel value="Update score" id="label-update-score2"/>
+
+                        <h:commandButton id="btn-update-Score1"
+                                         value="1"
+                                         class="btn"
+                                         action="#{itemController.updateScore(user.email, 1)}"/>
+                        <h:commandButton id="btn-update-Score2"
+                                         value="2"
+                                         class="btn"
+                                         action="#{itemController.updateScore(user.email, 2)}"/>
+                        <h:commandButton id="btn-update-Score3"
+                                         value="3"
+                                         class="btn"
+                                         action="#{itemController.updateScore(user.email, 3)}"/>
+                        <h:commandButton id="btn-update-Score4"
+                                         value="4"
+                                         class="btn"
+                                         action="#{itemController.updateScore(user.email, 4)}"/>
+                        <h:commandButton id="btn-update-Score5"
+                                         value="5"
+                                         class="btn"
+                                         action="#{itemController.updateScore(user.email, 5)}"/>
+
+
                     </c:when>
                     <c:otherwise>
                         <h:inputText id="input-txt-comment" value="#{itemController.comment}"/>
@@ -95,8 +118,6 @@
                     <p style="font-size: 15px;">#{ranking.comment}</p>
                     <p style="font-size: 10px;">commented: #{ranking.dateCommented}</p>
                 </div>
-
-
             </c:forEach>
         </h:form>
     </ui:define>

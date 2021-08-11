@@ -163,7 +163,7 @@ public class ItemServiceTest extends ServiceTestBase{
 
 
     @Test
-    void updateScore() {
+    public void updateScore() {
         User user = createValidUser("roozm@hotmail.com");
         assertNotNull (user);
         String userID = user.getEmail();
@@ -198,7 +198,7 @@ public class ItemServiceTest extends ServiceTestBase{
 
 
     @Test
-    void getItemsAverageRank() {
+    public void getItemsAverageRank() {
         Long itemId = createValidItem("Skiing", "North Pole", "Dangerous and extremely cold");
 
         User user1 = createValidUser("Foo@bar.com");

@@ -29,6 +29,8 @@ public class ItemController implements Serializable {
 
     private boolean ranked;
 
+    private boolean updateActive = false;
+
   /*  private String ctgWatersport = "Watersport";
     private String ctgTour = "Tour";
     */
@@ -40,26 +42,36 @@ public class ItemController implements Serializable {
 */
 
 
-
     public List<Item> getAllItemsList() {
-        if (this.allItemsList == null || this.allItemsList.size() == 0){
+        if (this.allItemsList == null || this.allItemsList.size() == 0) {
             retrieveAllItems();
         }
         return this.allItemsList;
     }
 
-    public int getAllItemsListSize(){
+    public int getAllItemsListSize() {
         return getAllItemsList().size();
     }
 
     public void retrieveAllItemsBySearch() {
-        this.allItemsList = itemService.getAllItemsByCategory( getChosenFilterCtg().toLowerCase(), true );
+        this.allItemsList = itemService.getAllItemsByCategory(getChosenFilterCtg().toLowerCase(), true);
     }
 
     public void retrieveAllItems() {
         this.allItemsList = itemService.getALLItemOrderByCategory(true);
         System.out.println("List size : " + this.allItemsList.size());
     }
+
+
+    public boolean isUpdateActive() {
+        return this.updateActive;
+    }
+
+    public void setUpdateActive(boolean active) {
+        this.updateActive = active;
+    }
+
+
 
 /*    public void makeAllItemsList(List<Item> allItemsList) {
         this.allItemsList = allItemsList;
@@ -99,7 +111,7 @@ public class ItemController implements Serializable {
     }
 
 
-    public void setToRanked( boolean isRanked) {
+    public void setToRanked(boolean isRanked) {
         this.ranked = isRanked;
     }
 
@@ -116,11 +128,11 @@ public class ItemController implements Serializable {
     }
 
 
-    public void checkItemIsRanked(String userID){
-        System.out.println("usersEmail: " +  userID);
-        boolean isRanked = rankService.userHasRankedItem( userID , getSelectedItem().getId() );
+    public void checkItemIsRanked(String userID) {
+        System.out.println("usersEmail: " + userID);
+        boolean isRanked = rankService.userHasRankedItem(userID, getSelectedItem().getId());
 
-        setToRanked( isRanked );
+        setToRanked(isRanked);
     }
 
 
@@ -151,21 +163,22 @@ public class ItemController implements Serializable {
 
 
     public String giveItemScore(String userId, Long itemId, Integer score) {
-        Long rankId = rankService.rankItem( userId, itemId, score, null);
+        Long rankId = rankService.rankItem(userId, itemId, score, null);
 
-        setSelectedItem( itemService.getItem( itemId, true ));
+        setSelectedItem(itemService.getItem(itemId, true));
 
-        setToRanked( true );
+        setToRanked(true);
         return "/itemDetails.jsf&faces-redirect=true";
     }
 
-    public void giveItemComment(){
 
+    public String updateScore(String userId, Integer newScore) {
+        Long updatedItemId = itemService.updateScore( getSelectedItem().getId(), userId, newScore);
+        setUpdateActive(false);
+        setSelectedItem( itemService.getItem(updatedItemId, true) );
+
+        return "/itemDetails.jsf&faces-redirect=true";
     }
-
-
-
-
 
 
 }
