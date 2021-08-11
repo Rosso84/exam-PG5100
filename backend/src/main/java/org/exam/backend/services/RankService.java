@@ -70,16 +70,6 @@ public class RankService {
         return query.getResultList().size() > 0;
     }
 
-  /*  public Rank getRankByUserIdAndItemId(String userId, Long itemId){
-
-        TypedQuery<Rank> query = em.createQuery(
-                "select r from Rank r where r.user.email = ?1 and r.item.id = ?2",
-                Rank.class);
-        query.setParameter(1, userId);
-        query.setParameter(2, itemId);
-
-        return query.getSingleResult();
-    }*/
 
 
 

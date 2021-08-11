@@ -65,11 +65,6 @@ public class UserService {
         TypedQuery<User> query = em.createQuery("select c from User c", User.class);
         List<User> users = query.getResultList();
 
-      /*  if(with_purchases){
-            //force loading
-            users.forEach(c -> c.getPurchases().size());
-        }*/
-
         return users;
     }
 
