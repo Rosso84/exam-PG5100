@@ -1,4 +1,4 @@
-# Travel Forum, A Fullstack Webapplication For ReviewingTravels
+# Travel Forum, A Fullstack Webapplication For Reviewing Travels
 This webapplication focuses on testing, security, 
 and developement of the backend side of a enterprise system.
 The repository focuses on Java, targeting frameworks like Spring and Java EE and was my exam task in august 2021,
