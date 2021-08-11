@@ -74,7 +74,7 @@ In the “frontend” module, you need to provide at least the following feature
 - Extras: added some poor style and design
 
 ### Not acheived
-
+- Forgot to sort Items by ranking/score
 
 
 
