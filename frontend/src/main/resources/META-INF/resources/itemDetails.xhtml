@@ -37,69 +37,73 @@
 
                 <c:choose>
                     <c:when test="#{itemController.isItemRanked()}">
-                        <h:outputLabel value="Update score" id="label-update-score2"/>
+                        <p style="color: lightslategrey; font-size: 12px;">I
+                            n order to comment you need to first provide a message and then press a score number to publish
+                        </p>
 
+                        <h:outputLabel  value="Update score and comment" id="label-update-score2"/>
+                        <br/>
                         <h:commandButton id="btn-update-Score1"
                                          value="1"
                                          class="btn"
-                                         action="#{itemController.updateScore(user.email, 1)}"/>
+                                         action="#{itemController.updateScoreAndComment(user.email, 1)}"/>
                         <h:commandButton id="btn-update-Score2"
                                          value="2"
                                          class="btn"
-                                         action="#{itemController.updateScore(user.email, 2)}"/>
+                                         action="#{itemController.updateScoreAndComment(user.email, 2)}"/>
                         <h:commandButton id="btn-update-Score3"
                                          value="3"
                                          class="btn"
-                                         action="#{itemController.updateScore(user.email, 3)}"/>
+                                         action="#{itemController.updateScoreAndComment(user.email, 3)}"/>
                         <h:commandButton id="btn-update-Score4"
                                          value="4"
                                          class="btn"
-                                         action="#{itemController.updateScore(user.email, 4)}"/>
+                                         action="#{itemController.updateScoreAndComment(user.email, 4)}"/>
                         <h:commandButton id="btn-update-Score5"
                                          value="5"
                                          class="btn"
-                                         action="#{itemController.updateScore(user.email, 5)}"/>
-
-
+                                         action="#{itemController.updateScoreAndComment(user.email, 5)}"/>
+                        <br/>
+                        <h:inputText style="height: 60px;" id="input-txt-comment-update" value="#{itemController.comment}"/>
                     </c:when>
                     <c:otherwise>
-                        <h:inputText id="input-txt-comment" value="#{itemController.comment}"/>
-                        <h:commandButton id="btnComment"
-                                         value="Submit"
-                                         class="btn"
-                                         action="#{itemController.giveItemScore(user.email, item.id, 4)}"
-                                         disabled="#{itemController.isItemRanked()}"
-                        />
-                        <p>Choose a score</p>
+
+                        <p>First leave a comment and choose a score</p>
+
                         <h:commandButton id="btnScore1"
                                          value="1"
                                          class="btn"
-                                         action="#{itemController.giveItemScore(user.email, item.id, 1)}"
-                                         disabled="#{itemController.isItemRanked() }"/>
+                                         action="#{itemController.giveItemScoreAndComment(user.email, item.id, 1)}"
+                                         />
                         <h:commandButton id="btnScore2"
                                          value="2"
                                          class="btn"
-                                         action="#{itemController.giveItemScore(user.email, item.id, 2)}"
-                                         disabled="#{itemController.isItemRanked() }"/>
+                                         action="#{itemController.giveItemScoreAndComment(user.email, item.id, 2)}"
+                                         />
                         <h:commandButton id="btnScore3"
                                          value="3"
                                          class="btn"
-                                         action="#{itemController.giveItemScore(user.email, item.id, 3)}"
-                                         disabled="#{itemController.isItemRanked() }"/>
+                                         action="#{itemController.giveItemScoreAndComment(user.email, item.id, 3)}"
+                                         />
                         <h:commandButton id="btnScore4"
                                          value="4"
                                          class="btn"
-                                         action="#{itemController.giveItemScore(user.email, item.id, 4)}"
-                                         disabled="#{itemController.isItemRanked() }"/>
+                                         action="#{itemController.giveItemScoreAndComment(user.email, item.id, 4)}"
+                                         />
                         <h:commandButton id="btnScore5"
                                          value="5"
                                          class="btn"
-                                         action="#{itemController.giveItemScore(user.email, item.id, 5)}"
-                                         disabled="#{itemController.isItemRanked() }"/>
+                                         action="#{itemController.giveItemScoreAndComment(user.email, item.id, 5)}"
+                                         />
+                        <br/>
+                        <h:inputText style="height: 60px;"  id="input-txt-comment" value="#{itemController.comment}"/>
+                        <br/>
+                        <br/>
                     </c:otherwise>
                 </c:choose>
             </sec:authenticated>
             <sec:anonymous>
+                <br/>
                 <h:outputText style="font-size: 16px; color: blueviolet"
                               value="You need to login/register to rank/comment this item."/>
             </sec:anonymous>

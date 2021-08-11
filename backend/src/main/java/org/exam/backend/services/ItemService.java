@@ -55,6 +55,7 @@ public class ItemService {
         return items;
     }
 
+
     public List<Item> getAllItemsByCategory(String ctg, boolean with_rankings){
         TypedQuery<Item> query = em.createQuery(
                 "select i from Item i where i.category = ?1", Item.class);
@@ -84,6 +85,7 @@ public class ItemService {
        em.merge( item );
        return item.getId();
     }
+
 
     public Long updateScore(Long itemId, String userId, Integer score){
 
