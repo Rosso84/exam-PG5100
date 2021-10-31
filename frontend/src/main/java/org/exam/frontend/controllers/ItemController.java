@@ -31,6 +31,8 @@ public class ItemController implements Serializable {
 
     private List<Item> allItemsList;
 
+    private String location;
+
 
     public List<Item> getAllItemsList() {
         if (this.allItemsList == null || this.allItemsList.size() == 0) {
@@ -155,6 +157,8 @@ public class ItemController implements Serializable {
 
         return "/itemDetails.jsf&faces-redirect=true";
     }
+
+
 
 
 }

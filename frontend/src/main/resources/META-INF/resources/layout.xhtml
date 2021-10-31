@@ -28,7 +28,7 @@
 <body>
 
 <sec:authenticated>
-    <c:set value="#{userInfoController.userInfo}" var="user"/>
+    <c:set value="#{userInfoController.userInfoWithoutPurchases}" var="user"/>
     <p class="welcome_message">Welcome #{user.firstname}!! </p>
     <a href="index.jsf" class="btn btn-white btn-animation-1">Home</a>
     <a href="userDetail.jsf" class="btn btn-white btn-animation-1">My Account</a>

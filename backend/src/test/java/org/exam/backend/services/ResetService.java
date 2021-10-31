@@ -5,6 +5,7 @@ package org.exam.backend.services;
 
 
 import org.exam.backend.entities.Item;
+import org.exam.backend.entities.Purchase;
 import org.exam.backend.entities.Rank;
 import org.exam.backend.entities.User;
 import org.springframework.stereotype.Service;
@@ -33,8 +34,10 @@ public class ResetService {
         query.executeUpdate();
 
         deleteEntities(Rank.class);
+        deleteEntities(Purchase.class);
         deleteEntities(Item.class);
         deleteEntities(User.class);
+
     }
 
     private void deleteEntities(Class<?> entity){

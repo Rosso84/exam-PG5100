@@ -17,7 +17,7 @@
 
     <ui:define name="content">
 
-        <h2>All Items (#{itemController.allItemsListSize})</h2>
+        <h4>All Items (#{itemController.allItemsListSize})</h4>
         <h:form prependId="false">
 
             <h:outputLabel style="font-size: 13px; color: cadetblue" id="label-filterby-ctg" value="Search by category  (Watersport or Tour)"/>
@@ -35,11 +35,12 @@
             <c:forEach var="item" items="#{itemController.allItemsList}">
                 <div class="item-div">
                     <p> Category: #{item.category}</p>
+                    <img alt="watersport1" src="assets/images/" style="size: 50px;"/>
                     <p>#{item.title}</p>
                     <sec:authenticated>
                         <h:commandButton value="See Details"
                                          id="detail-btn-item1"
-                                         action="#{itemController.toDetailPageAuthenticated( item, userInfoController.userInfo.email )}"
+                                         action="#{itemController.toDetailPageAuthenticated( item, userInfoController.userInfoWithoutPurchases.email )}"
                                          class="btn btn-white btn-animation-1"/>
                     </sec:authenticated>
                     <sec:anonymous>
@@ -48,6 +49,10 @@
                                          action="#{itemController.toDetailPageAnonymous( item )}"
                                          class="btn btn-white btn-animation-1"/>
                     </sec:anonymous>
+                    <p style="color: blueviolet; font-size: 12px;" >
+                        #{itemController.getAvgVotes( item )} of 5 stars
+                        <span style="color: blue"> (by #{itemController.getNumberOfUsersVoted( item )} users) </span>
+                    </p>
                 </div>
                 <br/>
             </c:forEach>

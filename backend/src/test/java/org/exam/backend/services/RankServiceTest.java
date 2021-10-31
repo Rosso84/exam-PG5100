@@ -37,7 +37,7 @@ public class RankServiceTest extends ServiceTestBase{
 
     private User createValidUser(String email) {
         boolean createdUser = userService.createUser(email, name, midleName, surename, address, postalCode, password);
-        User user = userService.getUser(email);
+        User user = userService.getUser(email, false);
         return user;
     }
 
@@ -89,12 +89,6 @@ public class RankServiceTest extends ServiceTestBase{
 
     }
 
-
-    @Test
-    public void testGetUsersRanking(){
-
-    }
-
     @Test
     public void testRankItemByManyUsers(){
         User user1 = createValidUser( email );
@@ -108,7 +102,10 @@ public class RankServiceTest extends ServiceTestBase{
 
     }
 
+    @Test
+    public void testGetUsersRanking(){
 
+    }
 
 
 

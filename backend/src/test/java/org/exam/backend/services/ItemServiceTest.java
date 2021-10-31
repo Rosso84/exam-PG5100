@@ -48,7 +48,7 @@ public class ItemServiceTest extends ServiceTestBase{
                 "123456");
         assertTrue(created);
 
-        return userService.getUser( email );
+        return userService.getUser( email, false );
     }
 
 

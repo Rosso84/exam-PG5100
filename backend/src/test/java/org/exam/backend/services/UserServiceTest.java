@@ -75,7 +75,7 @@ public class UserServiceTest extends ServiceTestBase{
 
     @Test
     public void testNoUsers() {
-        List<User> list = userService.getAllUsers();
+        List<User> list = userService.getAllUsers(false);
         assertEquals(0, list.size());
     }
 
@@ -86,7 +86,7 @@ public class UserServiceTest extends ServiceTestBase{
         boolean created = userService.createUser(email, name, midleName, surename, address, postalCode, password);
         assertTrue(created);
 
-        User user = userService.getUser( email );
+        User user = userService.getUser( email, false );
         assertEquals( email, user.getEmail() );
 
     }

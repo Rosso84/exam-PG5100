@@ -11,6 +11,7 @@
 
     <groupId>org.exam.report</groupId>
     <artifactId>report</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -44,8 +45,7 @@
             </plugins>
         </pluginManagement>
 
-        <plugins>
-            <plugin>
+        <plugins><plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
                 <version>5.3.1</version>

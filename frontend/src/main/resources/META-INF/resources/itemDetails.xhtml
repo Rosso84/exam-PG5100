@@ -21,7 +21,7 @@
 
 
         <h:form>
-            <c:set value="#{userInfoController.userInfo}" var="user"/>
+            <c:set value="#{userInfoController.userInfoWithoutPurchases}" var="user"/>
             <c:set var="item" value="#{itemController.selectedItem}"/>
 
             <br/>
@@ -34,12 +34,20 @@
             <br/>
 
             <sec:authenticated>
+                <h:commandButton id="btnPurchase"
+                                 value="Purchase"
+                                 class="btn"
+                                 action="#{purchaseController.bookTrip(user.email)}"
+                                 disabled="#{userInfoController.isTripPurchased( user, item.id)}"
+                />
+                <c:choose>
+                    <c:when test="#{userInfoController.isTripPurchased( user, item.id)}">
+                        <p style="color: red; font-size: medium">You have already booked this trip</p>
+                    </c:when>
+                </c:choose>
 
                 <c:choose>
                     <c:when test="#{itemController.isItemRanked()}">
-                        <p style="color: lightslategrey; font-size: 12px;">I
-                            n order to comment you need to first provide a message and then press a score number to publish
-                        </p>
 
                         <h:outputLabel  value="Update score and comment" id="label-update-score2"/>
                         <br/>
@@ -116,11 +124,12 @@
             </p>
 
             <c:forEach items="#{item.rankings}" var="ranking">
+
                 <div class="item-div">
                     <p style="font-size: 15px;">user: #{ranking.user.firstname}</p>
                     <p style="font-size: 25px; color: red">#{ranking.score}</p>
                     <p style="font-size: 15px;">#{ranking.comment}</p>
-                    <p style="font-size: 10px;">commented: #{ranking.dateCommented}</p>
+                    <p style="font-size: 10px;">#{ranking.dateCommented}</p>
                 </div>
             </c:forEach>
         </h:form>

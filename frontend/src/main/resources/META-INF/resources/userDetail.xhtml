@@ -17,7 +17,7 @@
 
     <ui:define name="content">
 
-        <c:set value="#{userInfoController.userInfo}" var="user"/>
+        <c:set value="#{userInfoController.userInfoWithPurchases}" var="user"/>
         <h4>Account details</h4>
         <p style="font-size: 13px;">Name: #{user.firstname}</p>
         <p style="font-size: 13px;">Middlename: #{user.middleName}</p>
@@ -30,6 +30,24 @@
 
 
 
+        <h4>Your Purchases</h4>
+        <c:choose>
+            <c:when test="#{userInfoController.isPurchasesEmpty( user )}">
+                <c:forEach var="purchase" items="#{user.purchases}">
+                    <h:form prependId="false">
+                        <p>
+                            Category: <span style="color:blue">#{purchase.item.category}</span>
+                            Title: <span style="color:blue">#{purchase.item.title}</span>
+                        </p>
+                        <br/>
+                    </h:form>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <p>You have not booked any trips yet</p>
+            </c:otherwise>
+            <br/>
+        </c:choose>
     </ui:define>
 
 </ui:composition>

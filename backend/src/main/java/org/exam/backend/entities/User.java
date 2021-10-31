@@ -49,6 +49,9 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> roles;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)  //TODO: what cascadetype should user be allowed to? Persist only?
+    private List<Purchase> purchases;
+
 
 
     public User() {
@@ -142,4 +145,11 @@ public class User {
         this.numberOfVotes = numberOfVotes;
     }
 
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
 }
