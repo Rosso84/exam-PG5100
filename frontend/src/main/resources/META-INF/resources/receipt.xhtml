@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:sec="http://www.springframework.org/security/tags"
+>
+
+<ui:composition template="/layout.xhtml">
+
+    <ui:define name="title">
+        Receipt
+    </ui:define>
+
+
+    <ui:define name="content">
+        <h2>Congrats!!</h2>
+
+        <p>Purchase was succssfull.View all your purchased trips in your account page by clicking on ´my Account´</p>
+
+        <a href="/index.jsf">Back to main page</a>
+    </ui:define>
+
+</ui:composition>
+</html>
