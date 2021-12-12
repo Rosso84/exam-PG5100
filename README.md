@@ -41,7 +41,7 @@ annotation.
 
 - The calculation of code coverage with JaCoCo is enabled. 
   
-- There tests with codecoverage of 100% classes, 73% methods and 88% lines
+- Theres tests with codecoverage of 100% classes, 73% methods and 88% lines
 
 
 In the “frontend” module, you need to provide at least the following features:
@@ -71,14 +71,13 @@ In the “frontend” module, you need to provide at least the following feature
 - When running in the application in development mode, the application has
   some fake data already present in the database (3 users, 15 items and each item ranked by all three users).
   
-- Extras: added some poor style and design
-
-### Not acheived
-- Forgot to sort Items by ranking/score
-
+Extras: 
+- Added some poor style and design
+- Added the possibilty to purchase and book a trip. You can also view your booked trips in your account page.
 
 
-## Requirements
+
+## Requirements To Run Application
 JDK 11 (download it from https://adoptopenjdk.net/, do not use the JDK from Oracle)
 
 An IDE (recommended IntelliJ IDEA Ultimate Edition)
