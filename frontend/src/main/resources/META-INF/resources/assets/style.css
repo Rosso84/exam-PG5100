@@ -2,14 +2,12 @@
 html, body {
     text-align: center;
     font-size: 1.2em;
-    position: absolute;
-    /* background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);*/
+    position: relative;
     background: lightcyan;
-    width: 1430px;
+    width: 1530px;
     height: fit-content;
 
 }
-
 
 .box1homeBtn{
     position:relative;
@@ -132,8 +130,8 @@ html, body {
 
 .item-div{
     position: relative;
-    left: 600px;
-    width: 200px;
+    left: 510px;
+    width: 400px;
     height: 210px;
     border: black;
     border-style: wave;
@@ -141,12 +139,63 @@ html, body {
     background: white;
 }
 
-.description-div{
+.item-description-div{
     position: relative;
     left: 510px;
     width: 400px;
-    height: 250px;
-    background: antiquewhite;
+    height: fit-content;
 }
 
+.purchase-div{
+    position: absolute;
+    top: 310px;
+    left: 1010px;
+    width: 400px;
+    height: fit-content;
+    border: black;
+    border-width: 2px;
+    background: white;
+    border-radius: 13px;
+}
 
+.book-item-description{
+    font-size: 12px;
+}
+
+.apply-comment-div1{
+    position: relative;
+    width: 400px;
+    height: fit-content;
+    left: 510px;
+    top: 20px;
+}
+
+.apply-comment-div2{
+    position: relative;
+    width: 400px;
+    height: fit-content;
+    left: 510px;
+    top: 80px;
+}
+.input-text-comment1{
+    height: 60px;
+    width:400px;
+}
+
+.all-comments-div{
+    position: relative;
+    left: 510px;
+    width: 400px;
+    height: fit-content;
+    border: black;
+    background: white;
+    /*position: absolute;
+    top: 400px;
+    left: 510px;
+    width: 400px;
+    height: fit-content;
+    border: black;
+    border-style: wave;
+    border-width: 2px;
+    background: white;*/
+}

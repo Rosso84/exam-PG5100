@@ -35,7 +35,7 @@
             <c:forEach var="item" items="#{itemController.allItemsList}">
                 <div class="item-div">
                     <p> Category: #{item.category}</p>
-                    <img alt="watersport1" src="assets/images/" style="size: 50px;"/>
+                    <img alt="category-img" src="assets/images/" style="size: 50px;"/>
                     <p>#{item.title}</p>
                     <sec:authenticated>
                         <h:commandButton value="See Details"
