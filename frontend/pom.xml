@@ -150,7 +150,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <finalName>travelforum</finalName> <!--TODO: Is this name ok? or need to name as travel_agency like the project artifactid? -->
+                    <finalName>tripforum</finalName> <!--TODO: Is this name ok? or need to name as travel_agency like the project artifactid? -->
                     <classifier>exec</classifier>
                 </configuration>
                 <executions>
@@ -170,13 +170,13 @@
                     <artifactId>heroku-maven-plugin</artifactId>
                     <version>2.0.2</version>
                     <configuration>
-                        <appName>travel-forum-rooz</appName> <!--TODO: Remember to rename when created new name at Heroku -->
+                        <appName>trip-forum-rosso</appName>
                         <includeTarget>false</includeTarget>
                         <includes>
-                            <include>target/travelforum-exec.jar</include>
+                            <include>target/tripforum-exec.jar</include>
                         </includes>
                         <processTypes>
-                            <web>java -Dserver.port=$PORT -jar target/travelforum-exec.jar</web>
+                            <web>java -Dserver.port=$PORT -jar target/tripforum-exec.jar</web>
                         </processTypes>
                         <jdkVersion>11</jdkVersion>
                     </configuration>
