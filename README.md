@@ -49,7 +49,7 @@ In the “frontend” module, you need to provide at least the following feature
 - Homepage: displays all the items, with info summaries, and links to detail page. 
   Each Item has an average score provided in ItemDetail Page.
   
-- If a user is logged in, it displays a welcome message (re-used from my teachers material).
+- If a user is logged in, it displays a welcome message.
 
 - Homepage does have a filter system in which a user can filter out items based on 
   category (only added 2 categories Watersport and Tour). It shows all items, or only the 
@@ -61,7 +61,7 @@ In the “frontend” module, you need to provide at least the following feature
   voters the rank was computed (e.g., “average 4.7 based by 11 users”).
 
 - There is a fully working User login/signup page, based on Spring Security and storing of user info on the SQL
-  database (Mostly reused from my teachers materials). It is possible to logout from any of the pages via a ´logout´ button. When a
+  database. It is possible to logout from any of the pages via a ´logout´ button. When a
   login/signup fails, it shows an error message. A unique email address is used as  UserID and MUST be a valid email format. 
   Password must be at least 6 digits 
   
